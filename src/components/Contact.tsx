@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
+import { motion } from 'framer-motion';
+import AnimationWrapper from './AnimationWrapper';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -34,63 +36,77 @@ const Contact = () => {
   };
   
   return (
-    <section id="contact" className="bg-akcess-yellow text-akcess-black">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="bg-akcess-black py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <AnimationWrapper type="fade" className="mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready To Make Your Website <span className="text-akcess-yellow">Accessible?</span>
+          </h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Get in touch with our team and let's create a more inclusive web experience together.
+          </p>
+        </AnimationWrapper>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="animate-fade-in">
-            <h2 className="text-2xl font-bold mb-4">Get in touch</h2>
-            <p className="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <input 
-                  type="text" 
-                  name="name" 
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  className="w-full bg-white bg-opacity-20 border border-akcess-black border-opacity-20 rounded-md p-3"
-                  required
-                />
-              </div>
-              
-              <div className="mb-4">
-                <input 
-                  type="email" 
-                  name="email" 
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your email address"
-                  className="w-full bg-white bg-opacity-20 border border-akcess-black border-opacity-20 rounded-md p-3"
-                  required
-                />
-              </div>
-              
-              <div className="mb-6">
-                <textarea 
-                  name="message" 
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="Your message"
-                  className="w-full bg-white bg-opacity-20 border border-akcess-black border-opacity-20 rounded-md p-3"
-                  required
-                ></textarea>
-              </div>
-              
-              <button 
-                type="submit" 
-                className="bg-akcess-black text-white py-3 px-6 rounded-md hover:bg-opacity-80 transition-colors"
-              >
-                Submit Form
-              </button>
-            </form>
-          </div>
+          <AnimationWrapper type="slide-right">
+            <motion.div 
+              className="rounded-xl border border-akcess-yellow/30 p-8 bg-akcess-gray/30 backdrop-blur-sm"
+              whileHover={{ boxShadow: "0 0 20px rgba(229, 255, 84, 0.2)" }}
+            >
+              <h3 className="text-2xl font-bold mb-6 text-akcess-yellow">Send us a message</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-6">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className="w-full bg-akcess-black border border-akcess-yellow/20 rounded-md p-3 focus:border-akcess-yellow focus:ring-1 focus:ring-akcess-yellow focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                
+                <div className="mb-6">
+                  <input 
+                    type="email" 
+                    name="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your email address"
+                    className="w-full bg-akcess-black border border-akcess-yellow/20 rounded-md p-3 focus:border-akcess-yellow focus:ring-1 focus:ring-akcess-yellow focus:outline-none transition-all"
+                    required
+                  />
+                </div>
+                
+                <div className="mb-8">
+                  <textarea 
+                    name="message" 
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={5}
+                    placeholder="Your message"
+                    className="w-full bg-akcess-black border border-akcess-yellow/20 rounded-md p-3 focus:border-akcess-yellow focus:ring-1 focus:ring-akcess-yellow focus:outline-none transition-all"
+                    required
+                  ></textarea>
+                </div>
+                
+                <motion.button 
+                  type="submit" 
+                  className="bg-akcess-yellow text-akcess-black py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors w-full md:w-auto font-medium"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Send Message
+                </motion.button>
+              </form>
+            </motion.div>
+          </AnimationWrapper>
           
-          <div className="animate-fade-in-right">
+          <AnimationWrapper type="slide-up" className="flex flex-col justify-center">
             <div className="mb-8">
-              <h3 className="font-semibold mb-2">Office</h3>
-              <p className="text-sm">
+              <h3 className="font-semibold mb-3 text-xl text-akcess-yellow">Office Address</h3>
+              <p className="text-gray-300">
                 941, Street P, Block F<br/>
                 Central business park<br/>
                 Ohio
@@ -98,13 +114,22 @@ const Contact = () => {
             </div>
             
             <div className="mb-8">
-              <h3 className="font-semibold mb-2">Contact</h3>
-              <p className="text-sm">
+              <h3 className="font-semibold mb-3 text-xl text-akcess-yellow">Contact Information</h3>
+              <p className="text-gray-300">
                 +1 332 552 3215<br/>
                 hello@akcesslabs.com
               </p>
             </div>
-          </div>
+            
+            <div>
+              <h3 className="font-semibold mb-3 text-xl text-akcess-yellow">Office Hours</h3>
+              <p className="text-gray-300">
+                Monday - Friday: 9:00 AM - 6:00 PM<br/>
+                Saturday: 10:00 AM - 2:00 PM<br/>
+                Sunday: Closed
+              </p>
+            </div>
+          </AnimationWrapper>
         </div>
       </div>
     </section>
