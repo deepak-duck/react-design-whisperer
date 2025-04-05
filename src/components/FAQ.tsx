@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AnimationWrapper from './AnimationWrapper';
 
 const FAQ = () => {
   const faqs = [
@@ -33,20 +34,26 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="bg-akcess-black">
+    <section id="faq" className="bg-akcess-black py-20">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center animate-fade-in">Frequently Asked Questions</h2>
+        <AnimationWrapper type="fade">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            Frequently Asked <span className="text-akcess-yellow">Questions</span>
+          </h2>
+        </AnimationWrapper>
         
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-800">
-              <AccordionTrigger className="py-4 text-left hover:text-akcess-yellow">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 pb-4">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+            <AnimationWrapper key={index} delay={index * 0.1} type="fade">
+              <AccordionItem value={`item-${index}`} className="border-b border-gray-800 mb-4">
+                <AccordionTrigger className="py-5 text-left hover:text-akcess-yellow font-medium text-lg">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-400 pb-5 text-base">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </AnimationWrapper>
           ))}
         </Accordion>
       </div>

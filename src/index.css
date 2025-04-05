@@ -39,7 +39,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-jakarta;
     scroll-behavior: smooth;
   }
 

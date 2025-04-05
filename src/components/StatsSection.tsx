@@ -24,14 +24,15 @@ const StatsSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <AnimationWrapper key={index} delay={index * 0.2} type="scale">
-              <SpotlightCard className="p-6 text-center">
-                <div className="py-4">
+              <SpotlightCard className="p-6 text-center h-full" spotlightSize={350}>
+                <div className="py-6">
                   <CountUp
                     end={stat.number}
                     suffix={stat.suffix}
-                    className="text-4xl md:text-5xl font-bold text-akcess-yellow mb-2"
+                    className="text-5xl md:text-6xl font-bold text-akcess-yellow mb-4"
+                    duration={2.5}
                   />
-                  <p className="text-gray-300 text-lg">{stat.title}</p>
+                  <p className="text-gray-300 text-lg font-medium">{stat.title}</p>
                 </div>
               </SpotlightCard>
             </AnimationWrapper>

@@ -43,7 +43,7 @@ export const SpotlightCard = ({
     <div
       ref={divRef}
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-akcess-yellow/20 bg-akcess-black transition-colors duration-300 group hover:border-akcess-yellow/50",
+        "relative overflow-hidden rounded-2xl border-2 border-akcess-yellow/30 bg-akcess-black transition-colors duration-300 group hover:border-akcess-yellow/70",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -51,10 +51,10 @@ export const SpotlightCard = ({
     >
       {isMounted && (
         <div
-          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity"
+          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500"
           style={{
             opacity,
-            background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, rgba(229, 255, 84, 0.1), transparent 40%)`,
+            background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, rgba(229, 255, 84, 0.15), transparent 40%)`,
           }}
         />
       )}
